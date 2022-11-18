@@ -1,0 +1,5 @@
+.terraform
+.terraform.lock.hcl
+bootstrap
+identify*
+terraform.tfstate
