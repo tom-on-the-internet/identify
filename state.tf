@@ -1,12 +1,12 @@
 terraform {
-  # backend "s3" {
-  #   bucket         = "identify-state-bucket"
-  #   key            = "state/terraform.tfstate"
-  #   region         = "ca-central-1"
-  #   encrypt        = true
-  #   kms_key_id     = "alias/identify-state-bucket-key"
-  #   dynamodb_table = "TerraformState"
-  # }
+  backend "s3" {
+    bucket         = "identify-state-bucket"
+    key            = "state/terraform.tfstate"
+    region         = "ca-central-1"
+    encrypt        = true
+    kms_key_id     = "alias/identify-state-bucket-key"
+    dynamodb_table = "IdentifyTerraformState"
+  }
 }
 
 resource "aws_kms_key" "this" {
@@ -57,7 +57,7 @@ resource "aws_s3_bucket_public_access_block" "this" {
 }
 
 resource "aws_dynamodb_table" "this" {
-  name           = "TerraformState"
+  name           = "IdentifyTerraformState"
   read_capacity  = 20
   write_capacity = 20
   hash_key       = "LockID"
