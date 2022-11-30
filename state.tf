@@ -57,10 +57,9 @@ resource "aws_s3_bucket_public_access_block" "this" {
 }
 
 resource "aws_dynamodb_table" "this" {
-  name           = "IdentifyTerraformState"
-  read_capacity  = 20
-  write_capacity = 20
-  hash_key       = "LockID"
+  name         = "IdentifyTerraformState"
+  hash_key     = "LockID"
+  billing_mode = "PAY_PER_REQUEST"
 
   attribute {
     name = "LockID"
